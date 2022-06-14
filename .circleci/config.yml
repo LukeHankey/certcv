@@ -5,7 +5,7 @@ orbs:
   black: iac/black@2.0.0
 
 jobs:
-  test:
+  test_and_cover:
     docker:
       - image: cimg/python:3.10.4
     resource_class: small
@@ -15,13 +15,18 @@ jobs:
           pip-dependency-file: dev-requirements.txt
           pkg-manager: pip
       - run:
-          command: pytest tests/
-          name: test
+          command: |
+            coverage run
+            coverage report
+            coverage html
+          name: Testing
+      - store_artifacts:
+          path: htmlcov
 
 workflows:
   testing:
     jobs:
-      - test
+      - test_and_cover
   black-format:
     jobs:
       - black/check
