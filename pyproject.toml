@@ -25,10 +25,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.coverage.run]
-source = ["./certcv/"]
 command_line = "-m pytest tests/"
 omit = [
-    "__init__.py"
+    "__init__.py",
 ]
 
 [tool.coverage.report]
