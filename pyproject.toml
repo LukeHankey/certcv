@@ -1,0 +1,37 @@
+[project]
+name = "certcv"
+description = "A copy/paster quick-tool for adding private keys and certificate keys to the openVPN configuration file."
+version = "0.1.0"
+readme = "README.md"
+keywords = ["certificate", "openvpn", "aws client vpn endpoint"]
+requires-python = "3.10"
+license = {text = "MIT"}
+dependencies = [
+    "argcomplete"
+]
+
+
+[project.scripts]
+cli-name = "certcv:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "certcv.__version__"}
+
+[tool.setuptools.packages]
+find = {}
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.coverage.run]
+source = ["./certcv/"]
+command_line = "-m pytest tests/"
+omit = [
+    "__init__.py"
+]
+
+[tool.coverage.report]
+skip_covered = true
+skip_empty = true
+show_missing = true
