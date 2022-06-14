@@ -5,7 +5,7 @@ from typing import NamedTuple
 from typing import Sequence
 from typing import TextIO
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 certificate_regex = r"(-----BEGIN CERTIFICATE-----\n[\s\S]*\n-----END CERTIFICATE-----)"
 
 
