@@ -1,5 +1,5 @@
-import certcv
+import certcv.certcv as certcv
 
 
 def test_version():
-    assert certcv.__version__ == "0.1.1"
+    assert certcv.__version__ == "0.1.2"
