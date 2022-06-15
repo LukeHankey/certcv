@@ -5,7 +5,7 @@ from typing import NamedTuple
 from typing import Sequence
 from typing import TextIO
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 certificate_regex = r"(-----BEGIN CERTIFICATE-----\n[\s\S]*\n-----END CERTIFICATE-----)"
 
 
@@ -29,11 +29,9 @@ def certcv(key: TextIO, cert: TextIO, config: TextIO) -> None:
     keys = _retreive_keys(key, cert)
 
     cert_tags = "<cert>\n" f"{keys.certificate}\n" "</cert>"
-
     private_key_tags = "<key>\n" f"{keys.private_key}\n" "</key>"
 
     text = f"\n\n{cert_tags}\n\n{private_key_tags}"
-
     config.write(text)
 
 
@@ -67,8 +65,6 @@ def main(argv: Sequence[str] | None = None) -> int:
         raise SystemExit()
 
     args = parser.parse_args(argv)
-    print(args, argv)
-    print(sys.argv)
 
     with open(args.key[0], "r") as key_file, open(args.cert[0], "r") as cert_file, open(
         args.config[0], "a"
